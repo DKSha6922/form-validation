@@ -23,6 +23,8 @@ validate.addField("#fname",[
  {
     errorLabelCssClass: ["form-error"],
     errorFieldCssClass:["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass:["form-error-success"],
 },
 
 );
@@ -38,6 +40,8 @@ validate.addField("#mail",[
  {
     errorLabelCssClass: ["form-error"],
     errorFieldCssClass:["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass:["form-error-success"],
 }
 );
 
@@ -60,6 +64,8 @@ validate.addField("#cell",[
  {
     errorLabelCssClass: ["form-error"],
     errorFieldCssClass:["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass:["form-error-success"],
 }
 );
 
@@ -71,6 +77,8 @@ validate.addField("#date",[
  {
     errorLabelCssClass: ["form-error"],
     errorFieldCssClass:["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass:["form-error-success"],
 }
 );
 
@@ -82,5 +90,7 @@ validate.addField("#address",[
  {
     errorLabelCssClass: ["form-error"],
     errorFieldCssClass:["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass:["form-error-success"],
 }
 );
