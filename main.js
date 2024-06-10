@@ -16,11 +16,15 @@ validate.addField("#fname",[
         rule:"maxLength",
         value:20
     },
+    
 
 ],
+
  {
     errorLabelCssClass: ["form-error"],
-}
+    errorFieldCssClass:["form-error-field"],
+},
+
 );
 
 validate.addField("#mail",[
@@ -33,6 +37,7 @@ validate.addField("#mail",[
 ],
  {
     errorLabelCssClass: ["form-error"],
+    errorFieldCssClass:["form-error-field"],
 }
 );
 
@@ -54,6 +59,7 @@ validate.addField("#cell",[
 ],
  {
     errorLabelCssClass: ["form-error"],
+    errorFieldCssClass:["form-error-field"],
 }
 );
 
@@ -64,6 +70,7 @@ validate.addField("#date",[
 ],
  {
     errorLabelCssClass: ["form-error"],
+    errorFieldCssClass:["form-error-field"],
 }
 );
 
@@ -74,5 +81,6 @@ validate.addField("#address",[
 ],
  {
     errorLabelCssClass: ["form-error"],
+    errorFieldCssClass:["form-error-field"],
 }
 );
