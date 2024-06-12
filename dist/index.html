@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <script type="module" crossorigin src="/form_valdation/assets/index-B4WdWY4J.js"></script>
+    <link rel="stylesheet" crossorigin href="/form_valdation/assets/index-Dwl-13jT.css">
+  </head>
+  <body>
+    <div class="flex items-center justify-center p-12">
+      <div class="mx-auto w-full max-w-[550px] bg-[#153448] rounded-md shadow-2xl">
+        <form id="form" class="flex items-center justify-center flex-col">
+          <h1 class="text-2xl capitalize font-semibold m-3 text-white">courier update</h1>
+          <div class="mb-5">
+            <label
+              for="fname"
+              class="block text-base font-medium text-[#948979]"
+              >Full Name</label
+            >
+            <input class="bg-[#F8F4E1] rounded-sm w-96 p-1 outline-none" type="text" id="fname" placeholder="Full Name" name="name" required />
+          </div>
+          <div class="mb-5">
+            <label for="mail" class="block text-base font-medium text-[#948979]"
+              >Email</label
+            >
+            <input class="bg-[#F8F4E1] rounded-sm w-96 p-1 outline-none"  type="mail" name="email" id="mail" placeholder="Email" required />
+          </div>
+          <div class="mb-5">
+            <label for="cell" class="block text-base font-medium text-[#948979]"
+              >Phone Number</label
+            >
+            <input class="bg-[#F8F4E1] rounded-sm w-96 p-1 outline-none" type="text" id="cell" placeholder="Phone Number" name="p.no" required />
+          </div>
+
+          <div class="mb-5">
+            <label for="date" class="block text-base font-medium text-[#948979]"
+              >Date and time</label
+            >
+            <input class="bg-[#F8F4E1] rounded-sm w-96 p-1 outline-none" type="datetime-local" name="date"  id="date" required />
+          </div>
+
+          <div class="mb-5">
+            <label
+              for="address"
+              class="block text-base font-medium text-[#948979]"
+              >Address</label
+            >
+            <textarea class="rounded-sm w-96 bg-[#F8F4E1] outline-none" name="address" id="address" required></textarea>
+          </div>
+
+          <button
+            class="border w-96 py-2 mb-5 rounded bg-[#3C5B6F] m-2 text-[#f8f4e1] hover:bg-[#948979] hover:text-[#DFD0B8] transition-all"
+            type="submit"
+          >
+            Make Order
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center p-5">
+      <table class="border-collapse border border-slate-500">
+        <thead class="bg-[#153448] text-white">
+        <tr>
+          <th class="border border-gray-500 px-6">Name</th>
+          <th class="border border-gray-500 px-6">Mail</th>
+          <th class="border border-gray-500 px-6">Phone.No</th>
+          <th class="border border-gray-500 px-3">Date and Time</th>
+          <th class="border border-gray-500 px-4">Address</th>
+        </tr>
+      </thead>
+      <tbody class="bg-[#3C5B6F] text-white">
+        <tr>
+          <td class="border border-gray-500 px-4">M.N.M.Shafi</td>
+          <td class="border border-gray-500 px-3 text-blue-300 font-semibold">name@gmail.com</td>
+          <td class="border border-gray-500 px-3">0701235679</td>
+          <td class="border border-gray-500 px-3">12/09/2024</td>
+          <td class="border border-gray-500 px-3 text-red-200 font-bold">Kandy</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </body>
+</html>
