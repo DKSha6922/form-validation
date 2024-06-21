@@ -1,96 +1,207 @@
-import JustValidate from 'just-validate';
+import JustValidate from "just-validate";
+import {formatMyDate} from "./utils";
+
 
 const form = document.getElementById("form");
 
 const validate = new JustValidate(form);
 
-validate.addField("#fname",[
+validate.addField(
+  "#fname",
+  [
     {
-        rule:"required",
+      rule: "required",
     },
     {
-        rule:"minLength",
-        value:3
+      rule: "minLength",
+      value: 3,
     },
     {
-        rule:"maxLength",
-        value:20
+      rule: "maxLength",
+      value: 20,
     },
-    
+  ],
 
-],
-
- {
+  {
     errorLabelCssClass: ["form-error"],
-    errorFieldCssClass:["form-error-field"],
+    errorFieldCssClass: ["form-error-field"],
     successLabelCssClass: ["form-success"],
-    successFieldCssClass:["form-error-success"],
-},
-
+    successFieldCssClass: ["form-error-success"],
+  }
 );
 
-validate.addField("#mail",[
+validate.addField(
+  "#mail",
+  [
     {
-        rule:"required",
+      rule: "required",
     },
     {
-        rule:"email",
+      rule: "email",
     },
-],
- {
+  ],
+  {
     errorLabelCssClass: ["form-error"],
-    errorFieldCssClass:["form-error-field"],
+    errorFieldCssClass: ["form-error-field"],
     successLabelCssClass: ["form-success"],
-    successFieldCssClass:["form-error-success"],
+    successFieldCssClass: ["form-error-success"],
+  }
+);
+
+validate.addField(
+  "#cell",
+  [
+    {
+      rule: "required",
+    },
+    {
+      rule: "number",
+    },
+    {
+      rule: "minLength",
+      value: 10,
+    },
+    {
+      rule: "maxLength",
+      value: 13,
+    },
+  ],
+  {
+    errorLabelCssClass: ["form-error"],
+    errorFieldCssClass: ["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass: ["form-error-success"],
+  }
+);
+
+validate.addField(
+  "#date",
+  [
+    {
+      rule: "required",
+    },
+  ],
+  {
+    errorLabelCssClass: ["form-error"],
+    errorFieldCssClass: ["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass: ["form-error-success"],
+  }
+);
+
+validate.addField(
+  "#address",
+  [
+    {
+      rule: "required",
+    },
+  ],
+  {
+    errorLabelCssClass: ["form-error"],
+    errorFieldCssClass: ["form-error-field"],
+    successLabelCssClass: ["form-success"],
+    successFieldCssClass: ["form-error-success"],
+  }
+);
+
+//get form values after submitting
+
+validate.onSuccess(() => {
+  let formData = new FormData(form);
+
+  let formDataValue = Object.fromEntries(formData.entries());
+
+  let newDataArr = [];
+
+  let getExisitingValues = JSON.parse(localStorage.getItem("datas"));
+  if (getExisitingValues) {
+    getExisitingValues.push(formDataValue);
+    localStorage.setItem("datas", JSON.stringify(getExisitingValues));
+  } else {
+    newDataArr.push(formDataValue);
+    localStorage.setItem("datas", JSON.stringify(newDataArr));
+  }
+
+  alert("Your Data SuccessFully Submitted");
+  getAllData();
+  form.reset();
+});
+
+function getAllData() {
+  let courierData = localStorage.getItem("datas");
+  let courierDataArr = JSON.parse(courierData);
+  const dataCard = document.getElementById("courierCard");
+
+  if (courierDataArr && courierDataArr.length > 0) {
+    dataCard.classList.remove("hidden");
+
+    const dataTable = document.getElementById("courierDataTable");
+
+    dataTable.innerHTML = "";
+
+    const newFinalValue = [];
+
+    courierDataArr.map((courierData) => {
+      let trEl = document.createElement("tr");
+      let td1El = document.createElement("td");
+      let td2El = document.createElement("td");
+      let td3El = document.createElement("td");
+      let td4El = document.createElement("td");
+      let td5El = document.createElement("td");
+      let td6El = document.createElement("td");
+      let deleteBtnEl = document.createElement("button");
+
+      td1El.classList.add("p-2", "border");
+      td1El.textContent = courierData.name;
+      td2El.classList.add("p-2", "border");
+      td2El.textContent = courierData.email;
+      td3El.classList.add("p-2", "border");
+      td3El.textContent = courierData["p-no"];
+      td4El.classList.add("p-2", "border");
+      td4El.textContent = formatMyDate(courierData.date);
+      td5El.classList.add("p-2", "border");
+      td5El.textContent = courierData.address;
+
+      deleteBtnEl.className=
+        "px-2 py-1 rounded bg-red-500 hover:bg-red-600 text-white text-sm";
+
+      deleteBtnEl.textContent = "Delete";
+      
+      deleteBtnEl.addEventListener("click", (e) => {
+        deleteCourierRequest(courierData);
+      });
+
+      td6El.classList.add("px-2", "py-1", "border");
+
+      td6El.append(deleteBtnEl);
+
+      trEl.append(td1El, td2El, td3El, td4El, td5El, td6El);
+
+      newFinalValue.push(trEl);
+    });
+
+    newFinalValue.forEach((el) => dataTable.append(el));
+  }else{
+    dataCard.classList.add("hidden");
+
+    console.log("no value available on localStorage");
+  }
 }
+function deleteCourierRequest(courierRequest){
+    const confirmation =confirm(`Do you want to delete ${courierRequest["name"]} record?`    
 );
 
-validate.addField("#cell",[
-    {
-        rule:"required",
-    },
-    {
-        rule:"number",
-    },
-    {
-        rule:"minLength",
-        value:10
-    },
-    {
-        rule:"maxLength",
-        value:13
-    }
-],
- {
-    errorLabelCssClass: ["form-error"],
-    errorFieldCssClass:["form-error-field"],
-    successLabelCssClass: ["form-success"],
-    successFieldCssClass:["form-error-success"],
-}
-);
+if(confirmation){
+    const existingCourierData = localStorage.getItem("datas");
 
-validate.addField("#date",[
-    {
-        rule:"required",
-    },
-],
- {
-    errorLabelCssClass: ["form-error"],
-    errorFieldCssClass:["form-error-field"],
-    successLabelCssClass: ["form-success"],
-    successFieldCssClass:["form-error-success"],
-}
-);
+    const courierDataObj = JSON.parse(existingCourierData);
 
-validate.addField("#address",[
-    {
-        rule:"required",
-    },
-],
- {
-    errorLabelCssClass: ["form-error"],
-    errorFieldCssClass:["form-error-field"],
-    successLabelCssClass: ["form-success"],
-    successFieldCssClass:["form-error-success"],
+    const otherRecords = courierDataObj.filter((courierReq)=> courierReq.id != courierRequest["id"]);
+
+    localStorage.setItem("datas",JSON.stringify(otherRecords));
+
+    getAllData();
 }
-);
+}
+
+getAllData();
