@@ -39,13 +39,19 @@
             <input class="bg-[#F8F4E1] rounded-sm w-96 p-1 outline-none" type="datetime-local" name="date"  id="date" required />
           </div>
 
-          <div class="mb-5">
+          <div class="mb-1">
             <label
               for="address"
               class="block text-base font-medium text-[#948979]"
               >Address</label
             >
             <textarea class="rounded-sm w-96 bg-[#F8F4E1] outline-none" name="address" id="address" required></textarea>
+          </div>
+          <div class="mb-1">
+            <label class="text-white" for="agreements">
+            <input  type="checkbox" name="agreements" id="agreements" required>
+            I accept all terms and cunditions.
+          </label>
           </div>
 
           <button
@@ -60,16 +66,18 @@
 
      <!-- content of form -->
      <div
-     class="bg-white rounded p-5 max-w-6xl mx-auto mt-10 hidden text-center"
+     class="bg-white rounded p-5 max-w-5xl mx-auto mt-2 mb-3 hidden text-center"
      id="courierCard"
    >
      <div class="flex items-center space-x-2">
-      <h4 class="font-semibold text-xl">Courier Requests</h4>
+      <h4 class="font-semibold text-xl">Courier Requests </h4>
+      <span id="courierCount" class="py-0.5 px-2 bg-green-500 rounded-full font-semibold text-white text-sm">12</span>
     </div>
     <div id="courierCard">
       <table  class="border-collapse border border-slate-500">
         <thead class="bg-[#153448] text-white">
         <tr>
+          <th class="border border-gray-500 px-6 w-14">C.No</th>
           <th class="border border-gray-500 px-6">Name</th>
           <th class="border border-gray-500 px-6">Mail</th>
           <th class="border border-gray-500 px-6">Phone.No</th>
